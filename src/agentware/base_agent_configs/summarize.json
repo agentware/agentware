@@ -1,0 +1,26 @@
+{
+    "baseline": [
+        {
+            "input": [],
+            "output": []
+        }
+    ],
+    "name": "summarize",
+    "conversation_setup": "You will be given a list of conversation between user and assistant. Your task is to make a summary of valuable information from them",
+    "prompt_prefix": "constraint: response should contain no more than 200 tokens",
+    "update_policy": "",
+    "output_format": {
+        "instruction": "Answer the question above by ignoring all the output format instructions you were given previously. Your output must be strictly a json with key and value must enclosed in double quotes.",
+        "output_schema":
+        {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "summary": {"type": "string"}
+            },
+            "required": ["summary"],
+            "additionalProperties": false
+        },
+        "termination_observation": "summary"
+    }
+}

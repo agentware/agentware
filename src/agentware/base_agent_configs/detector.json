@@ -1,0 +1,43 @@
+{
+    "baseline": [
+        {
+            "input": [],
+            "output": []
+        }
+    ],
+    "name": "facts",
+    "conversation_setup": "Your will be given a piece of text, For each of the concepts or objects, ask only one question about its state",
+    "prompt_prefix": "constraint: no more than 200 tokens",
+    "update_policy": "",
+    "output_format": {
+        "instruction": "Ignore all the output format instructions you were given previously. Your output must be strictly a json with key and value must enclosed in double quotes.",
+        "examples": [
+            {
+                "condition": "",
+                "output": "{\"questions\": [\"question1\", \"question2\", ...]}"
+            }  
+        ],
+        "output_schema": 
+        {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "questions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "properties": {
+                            "question": {
+                                "type": "string",
+                                "description": "the fact about this subject. Must not include the subject_concept"
+                            }
+                        }
+                    }
+                }
+            },
+            "required": ["questions"],
+            "additionalProperties": false
+        },
+        "termination_observation": "questions"
+    }
+}

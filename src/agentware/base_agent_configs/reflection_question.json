@@ -1,0 +1,30 @@
+{
+    "baseline": [
+        {
+            "input": [],
+            "output": []
+        }
+    ],
+    "name": "reflection_question",
+    "conversation_setup": "You will be given a text including conversations and observations, you need to come up with questions",
+    "prompt_prefix": "Constraint: no more than 200 tokens",
+    "output_format": {
+        "instruction": "Answer the question above by ignoring all the output format instructions you were given previously. Your output must be strictly a json with key and value must enclosed in double quotes.",
+        "output_schema":
+        {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "questions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "required": ["questions"],
+                "additionalProperties": false
+            }
+        },
+        "termination_observation": "questions"
+    }
+}

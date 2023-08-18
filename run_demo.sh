@@ -1,0 +1,1 @@
+python3 examples/document_reader.py

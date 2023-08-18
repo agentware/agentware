@@ -1,0 +1,38 @@
+{
+    "baseline": [
+        {
+            "input": [],
+            "output": []
+        }
+    ],
+    "name": "tool_query",
+    "conversation_setup": "You will be given a question or a task, your job is to come up with a few keywords that are closely relevant to the problem to solve. It can be relevant to the topic, key information or approach that you may need to complete the task, etc.",
+    "prompt_prefix": "constraint: response should contain no more than 200 tokens",
+    "output_format": {
+        "instruction": "Your output MUST be a json that has a keyword field.",
+        "examples": [
+            {
+                "condition": "",
+                "output": "{\"keyword\": [\"keyword1\", \"keyword2\", ...]}"
+            }  
+        ],
+        "output_schema":
+        {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "keyword": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "required": ["questions"],
+                "additionalProperties": false
+            },
+            "required": ["keyword"],
+            "additionalProperties": false
+        },
+        "termination_observation": "keyword"
+    }
+}

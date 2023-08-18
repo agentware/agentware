@@ -1,0 +1,44 @@
+{
+    "name": "attribute_question",
+    "conversation_setup": "",
+    "prompt_prefix": "Given the context of the below observations",
+    "update_policy": "",
+    "output_format": {
+        "instruction": "List all the attributes you already know about the the objects mentioned above. The attributes should reflect the current status of the object, with no duplication. Output must be a json in the following format:[{\"object\": <the name of the object>, \"attribute\": <the name of the attribute>, \"reason\": <the reason of selecting this attribute>}, ...]",
+        "examples": [
+            {
+                "condition": "",
+                "output": "{\"attributes\": [{\"name\": \"old joe\", \"attribute\": \"age\", \"reason\": \"the age of old joe is mentioned in the context\"]}"
+            }
+        ],
+        "output_schema": 
+        {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "attribute": {
+                                "type": "string"
+                            },
+                            "reason": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["name", "attribute", "reason"],
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "required": ["attributes"],
+            "additionalProperties": false
+        },
+        "termination_observation": "attributes"
+    }
+}

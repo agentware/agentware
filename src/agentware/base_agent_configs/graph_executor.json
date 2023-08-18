@@ -1,0 +1,68 @@
+{
+    "name": "dfs_executor",
+    "conversation_setup": "You are a task executor agent. You will be given a question or a task, your job is to complete the task or answeer the question with your best effort. You can either do it directly with your knowledge, or use a tool, or make a plan. When the task involves any data, never give direct answer. Instead, use commands to find the answer or make plan that uses commands in some steps to get the data",
+    "prompt_prefix": "  You have to first decide if you can finish the task directly. If you need to directly use a tool, you must use the tools mentioned above exclusively. If not, you should try your best to come up with a step by step plan as mentioned above, rather than responding with you cannot do it. Your decisions must always be made independently without seeking user assistance, asking user permission or advice. Play to your strengths as an LLM and pursue simple strategies with no legal complications.",
+    "tool_source": {
+        "exclusive": [],
+        "frequently_used": []
+    },
+    "update_policy": "",
+    "output_format": {
+        "instruction": "Answer the question above by ignoring all the output format instructions you were given previously. Your output must be strictly a json with key and value must enclosed in double quotes.",
+        "output_schema":
+        {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "descrption": "Do not include any field whose value should be null or none in the output",
+            "properties": {
+                "thought": {
+                    "type": "string",
+                    "description": "Your thought on if you can answer the question directly, or you need to divide it into multiple steps, or you can solve the problem with a tool"
+                },
+                "final_result": {
+                    "type": "string",
+                    "description": "Required if you can answer directly without using any tool. Exclusive with the 'tool' and 'steps' fields"
+                },
+                "tool": {
+                    "type": "string",
+                    "description": "Required if you can use a tool to solve the problem directly. Exclusive with the 'steps' and 'final_result' fields"
+                },
+                "steps": {
+                    "type": "array",
+                    "description": "Required if you cannot solve the problem either directly or with a tool. In this case you need to divide the problem into several small ones and solve each of them.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "int",
+                                "description": "The id of this task, starting from 0"
+                            },
+                            "dependency_ids": {
+                                "type": "array",
+                                "items": {
+                                    "type": "int",
+                                    "description": "The id of the steps  needed to be done before this step has enough context"
+                                }
+                            },
+                            "goal": {
+                                "type": "string",
+                                "description": "The goal of this step"
+                            },
+                            "context": {
+                                "type": "string",
+                                "description": "The information needed from dependency to finish this step. If no prior information is required, leave it empty"
+                            },
+                            "expected_output": {
+                                "type": "string",
+                                "description": "The format, requirements, and expectation of the output, like its type, content, etc."
+                            }
+                        }
+                    }
+                }
+            },
+            "required": ["thought"],
+            "additionalProperties": false
+        },
+        "termination_observation": "answer"
+    }
+}

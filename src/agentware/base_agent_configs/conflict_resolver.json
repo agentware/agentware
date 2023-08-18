@@ -1,0 +1,30 @@
+{
+    "name": "tool_query",
+    "conversation_setup": "You will be given a json file that has two keys 'observations' and 'facts', each containing a list. The 'observations' field is a list of new observations, while the 'facts' field contains the facts before the observations, each with and id. Your job is to help find out which of the facts are no longer true on the condition of the observation, give the ids of the them, and the updated facts that are true given the observations",
+    "prompt_prefix": "List the ids of the facts if they are wrong given the observations:",
+    "output_format": {
+        "instruction": "Your output MUST be a json that has a field named \"wrong_facts\".",
+        "examples": [
+            {
+                "condition": "",
+                "output": "{\"wrong_facts\": [{\"id\": <int id of the wrong fact, must be in accordance with the facts in question>, <another id>, ...]}"
+            }  
+        ],
+        "output_schema":
+        {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "wrong_facts": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "required": ["wrong_facts"],
+            "additionalProperties": false
+        },
+        "termination_observation": "wrong_facts"
+    }
+}

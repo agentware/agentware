@@ -1,0 +1,25 @@
+# Ignore Python cache files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw[co]
+
+# Ignore SQLite database file
+**/db.sqlite3
+
+# Ignore redis database file
+**/*.rdb
+
+# Build files
+**/*.whl
+src/dist
+src/build
+**/*.egg-info
+
+# Credentials
+**/.env
+
+# server generated files
+**/logs*
+**/volumes

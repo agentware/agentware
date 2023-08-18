@@ -1,0 +1,58 @@
+{
+    "baseline": [
+        {
+            "input": [],
+            "output": []
+        }
+    ],
+    "name": "extractor",
+    "conversation_setup": "Your are an assistant who helps with making knowledge graph. You will be given a text that contains a conversation between user and assistant around a specific topic. Find important concepts and insights regarding this topic.",
+    "prompt_prefix": "constraint: no more than 200 tokens",
+    "update_policy": "",
+    "output_format": {
+        "instruction": "Answer the question above by ignoring all the output format instructions you were given previously. Your output must be strictly a json with key and value must enclosed triple apostrophes.",
+        "output_schema": 
+        {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "concepts": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "summary": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "relationships": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "subject_concept": {
+                                "type": "string"
+                            },
+                            "relation": {
+                                "type": "string"
+                            },
+                            "object_concept": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["subject_concept", "relation", "object_concept"],
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "required": ["concepts", "relationships"],
+            "additionalProperties": false
+        },
+        "termination_observation": "questions"
+    }
+}
