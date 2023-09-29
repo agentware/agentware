@@ -21,8 +21,10 @@ class Object:
 
 
 class ObjectTracker:
+    DEFAULT_TRACK_MODEL = 'yolov8n.pt'
+
     def __init__(self, objects=[]) -> None:
-        self.model = YOLO('yolov8n.pt')
+        self.model = YOLO(self.DEFAULT_TRACK_MODEL)
         self.objects = objects
         self.img2vec = Img2Vec(cuda=False)
 
