@@ -21,6 +21,8 @@ setup(
         "jwt==1.3.1",
         "colorlog==6.7.0",
         "python-dotenv==1.0.0",
-        "pystache==0.6.0"
+        "pystache==0.6.0",
+        "ultralytics==8.0.158",
+        "img2vec-pytorch==1.0.1"
     ],
 )
