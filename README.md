@@ -1,6 +1,6 @@
 # Agentware
 
-Agentware is an AI agent library that builds knowledge base on the fly when doing daily job. With it, you can build chatbots won't forget who you are and what you like.
+Agentware is an AI agent library that builds knowledge base on the fly when doing daily job. With it, you can build chatbots won't forget who you are, what you like, and update its knowledgebase according to the new facts learned from conversation. \
 Agentware has a client and a server. The client is the agentware library, which handles conversation, LLM execution, memory management, etc. The server is a combination of vector database and key-value database, which stores the knowledge base and historical memory of the agent.
 
 ## Main Features
