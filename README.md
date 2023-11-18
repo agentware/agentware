@@ -1,3 +1,4 @@
+[![Discord Follow](https://dcbadge.vercel.app/api/server/MKK9wF7t?style=flat)](https://discord.gg/MKK9wF7t) [![GitHub Repo stars](https://img.shields.io/github/stars/agentware/agentware?style=social)](https://github.com/agentware/agentware/stargazers)
 # Agentware
 
 Agentware is an AI agent library that builds knowledge base on the fly when doing daily job. With it, you can build chatbots won't forget who you are, what you like, and update its knowledgebase according to the new facts learned from conversation. \
