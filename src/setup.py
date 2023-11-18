@@ -5,7 +5,7 @@ with open("../README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='agentware',
-    version='0.1.6',
+    version='1.2.0',
     description='A framework that can be used to easily build agents that has memory and knowledgebase',
     long_description=long_description,
     long_description_content_type="text/markdown",

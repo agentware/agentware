@@ -9,7 +9,7 @@ Agentware is an AI agent library. The agent builds knowledge base on the fly whe
 
 ## Quick start guide
 
-1. `cd <root>/agentware/agentware_server` and then run the server with docker using `docker-compose up`. You'll see tons of logs. To verify the server is launched, simply `curl http://localhost:8741/ping` and you will get a `pong` if things work fine.
+1. `cd <root>/agentware/agentware_server` and then run the server with docker using `docker-compose up`. You'll see tons of logs. To verify the server is launched, simply `curl http://localhost:8741/ping` and you will get a `pong` if things work fine. The demo is run under Docker version 24.0.2
 
    > Note: Currently this step is mandatory because we don't host any cloud service.
 
